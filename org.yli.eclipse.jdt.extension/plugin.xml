@@ -20,12 +20,34 @@
             id="org.yli.eclipse.jdt.extension.generate_guava_hashcode_equals"
             name="%GENERATE_HASHCODE_EQUALS">
       </command>
+      <command
+            description="%SEARCH_WITH_GOOGLE"
+            id="org.yli.eclipse.jdt.extension.terminal_search_with_google"
+            name="%SEARCH_WITH_GOOGLE">
+      </command>
+      <command
+            description="%SEARCH_WITH_GOOGLE"
+            id="org.yli.eclipse.jdt.extension.console_search_with_google"
+            name="%SEARCH_WITH_GOOGLE">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
       <handler
             class="org.yli.eclipse.jdt.extension.handlers.GenerateGuavaToStringHandler"
             commandId="org.yli.eclipse.jdt.extension.generate_guava_to_string">
+      </handler>
+      <handler
+            class="org.yli.eclipse.jdt.extension.handlers.GenerateGuavaHashcodeAndEqualsHandler"
+            commandId="org.yli.eclipse.jdt.extension.generate_guava_hashcode_equals">
+      </handler>
+      <handler
+            class="org.yli.eclipse.jdt.extension.handlers.SearchWithGoogleHandlerInTerminal"
+            commandId="org.yli.eclipse.jdt.extension.terminal_search_with_google">
+      </handler>
+      <handler
+            class="org.yli.eclipse.jdt.extension.handlers.SearchWithGoogleHandlerInConsole"
+            commandId="org.yli.eclipse.jdt.extension.console_search_with_google">
       </handler>
    </extension>
    <extension
@@ -60,8 +82,57 @@
                   commandId="org.yli.eclipse.jdt.extension.generate_guava_hashcode_equals"
                   label="%GENERATE_HASHCODE_EQUALS"
                   style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeMenuSelection">
+                     <iterate
+                           ifEmpty="false">
+                        <adapt
+                              type="org.eclipse.core.resources.IResource">
+                           <test
+                                 property="org.eclipse.core.resources.name"
+                                 value="*.java">
+                           </test>
+                        </adapt>
+                     </iterate>
+                  </with>
+               </visibleWhen>
             </command>
          </menu>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.tm.terminal.view.ui.TerminalsView?after=additions">
+         <command
+               commandId="org.yli.eclipse.jdt.extension.terminal_search_with_google"
+               icon="icons/google-icon.png"
+               label="%SEARCH_WITH_GOOGLE"
+               mnemonic="g"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.debug.ui.ProcessConsoleType.#ContextMenu">
+         <command
+               commandId="org.yli.eclipse.jdt.extension.console_search_with_google"
+               icon="icons/google-icon.png"
+               label="%SEARCH_WITH_GOOGLE"
+               mnemonic="g"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.MessageConsole.#ContextMenu">
+         <command
+               commandId="org.yli.eclipse.jdt.extension.console_search_with_google"
+               icon="icons/google-icon.png"
+               label="%SEARCH_WITH_GOOGLE"
+               mnemonic="g"
+               style="push">
+         </command>
       </menuContribution>
    </extension>
    <extension
@@ -88,6 +159,28 @@
             schemeId="org.yli.eclipse.jdt.extension.scheme"
             sequence="M1+H">
       </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.yli.eclipse.jdt.extension.googlesearch"
+            nameFilter="*.*"
+            objectClass="org.eclipse.ui.IEditorInput">
+         <menu
+               icon="icons/google-icon.png"
+               id="org.yli.eclipse.jdt.extension.menu_google_search"
+               label="%SEARCH_WITH_GOOGLE"
+               path="additions">
+         </menu>
+         <action
+               class="org.yli.eclipse.jdt.extension.actions.SearchWithGoogleAction"
+               icon="icons/google-icon.png"
+               id="org.yli.eclipse.jdt.extension.action_google_search"
+               label="%SEARCH_WITH_GOOGLE"
+               style="push">
+         </action>
+      </objectContribution>
    </extension>
 
 </plugin>

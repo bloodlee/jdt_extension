@@ -1,5 +1,9 @@
 package org.yli.eclipse.jdt.extension.util;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -92,5 +96,23 @@ public class MiscUtil {
     });
 
     return nonStaticMemberFields.toArray(new IField[] {});
+  }
+
+  public static void openBrowser(String url) {
+	  if (url == null || url.isEmpty()) {
+		  return;
+	  }
+	  
+	  if (Desktop.isDesktopSupported()) {
+		  Desktop desktop = Desktop.getDesktop();
+		  
+		  try {
+			  desktop.browse(new URI(url));
+		  } catch (IOException e) {
+			  e.printStackTrace();
+		  } catch (URISyntaxException e) {
+			  e.printStackTrace();
+		  }
+	  }
   }
 }
