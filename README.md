@@ -2,20 +2,71 @@
 
 The motivation is to make Eclipse JDT more powerful and easy-to-use.
 
-### Guava-based hashCode() and equals()
+### Guava-based hashCode(), equals() and toString()
 
-Eclipse provides utilities to generate hashCode() and equals(). But it's the old-style. The generated functions are usually very long, which makes the code hard to read.
+Eclipse provides utilities to generate hashCode(), equals() and toString(). But it's the old-style. The generated functions are usually very long, which makes the code hard to read.
 
 Google Guava provides a better solution for it. See [here](https://github.com/google/guava/wiki/CommonObjectUtilitiesExplained) for more details.
 
-JDT Extension can generate those functions based on Guava, which is shorter, tidy and easy to read.
+JDT Extension can generate Guava-styled functions, which are shorter, tidy and easy to read.
 
-### Guava-based toString()
+#### Usage
 
-The same as hashCode() and equals. Google Guava has better solution to generate toString() function. 
+* Right-click on a Java class
 
-JDT Extension can generate Guava-styled function for your classes.
+![screen1](https://bloodlee.github.io/img/jdt-extension-screen5.png)
+
+* Select the item to generate hashCode()/equals() or toString()
+* Select the classes in pop out dialog and click "OK"
+
+![screen2](https://bloodlee.github.io/img/jdt-extension-screen3.png)
+
+* Following is a sample
+
+```java
+import com.google.common.base.Objects;
+
+public class A {
+
+	private int a;
+	
+	private double b;
+	
+	private String c;
+
+	@Override
+	public int hashCode() {
+	  return Objects.hashCode(a, b, c);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+	  if (obj == this) {
+	    return true;
+	  }
+	  
+	  if (!(obj instanceof A)) {
+	      return false;
+	  }
+	  
+	  A anotherInstance = (A) obj;
+	  return Objects.equal(anotherInstance.a, this.a)
+	      && Objects.equal(anotherInstance.b, this.b)
+	      && Objects.equal(anotherInstance.c, this.c);
+	}
+	
+}
+
+```
 
 ### Search by Google
 
-Another utility is to put Google search in context menu in Editors/Consoles/Terminals.
+Another utility is to put Google search in context menu in editors/consoles/terminals.
+
+### Usage
+
+* Select the text you want to search in editors/consoles/terminals.
+* Right click and select "Search with Google"
+
+![screen3](https://bloodlee.github.io/img/jdt-extension-screen4.png)
+
