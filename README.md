@@ -1,37 +1,21 @@
-## Welcome to GitHub Pages
+## Welcome to JDT Extension
 
-You can use the [editor on GitHub](https://github.com/bloodlee/jdt_extension/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+The motivation is to make Eclipse JDT more powerful and easy-to-use.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Guava-based hashCode() and equals()
 
-### Markdown
+Eclipse provides utilities to generate hashCode() and equals(). But it's the old-style. The generated functions are usually very long, which makes the code hard to read.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Google Guava provides a better solution for it. See [here](https://github.com/google/guava/wiki/CommonObjectUtilitiesExplained) for more details.
 
-```markdown
-Syntax highlighted code block
+JDT Extension can generate those functions based on Guava, which is shorter, tidy and easy to read.
 
-# Header 1
-## Header 2
-### Header 3
+### Guava-based toString()
 
-- Bulleted
-- List
+The same as hashCode() and equals. Google Guava has better solution to generate toString() function. 
 
-1. Numbered
-2. List
+JDT Extension can generate Guava-styled function for your classes.
 
-**Bold** and _Italic_ and `Code` text
+### Search by Google
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/bloodlee/jdt_extension/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Another utility is to put Google search in context menu in Editors/Consoles/Terminals.
