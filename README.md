@@ -59,14 +59,14 @@ public class A {
 
 ```
 
-### Search by Google
+### Search by Google, StackOverflow
 
-Another utility is to put Google search in context menu in editors/consoles/terminals.
+Another utility is to put Google/StackOverflow search in context menu in editors/consoles/terminals.
 
 ### Usage
 
 * Select the text you want to search in editors/consoles/terminals.
-* Right click and select "Search with Google"
+* Right click and select "Search with Google" or "Search with StackOverflow"
 
 ![screen3](https://bloodlee.github.io/img/jdt-extension-screen4.png)
 
