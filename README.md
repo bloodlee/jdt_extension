@@ -63,10 +63,19 @@ public class A {
 
 Another utility is to put Google/StackOverflow search in context menu in editors/consoles/terminals.
 
-### Usage
+#### Usage
 
 * Select the text you want to search in editors/consoles/terminals.
 * Right click and select "Search with Google" or "Search with StackOverflow"
 
 ![screen3](https://bloodlee.github.io/img/jdt-extension-screen4.png)
 
+### Installation
+
+The simplest way is to Eclipse Marketplace.
+
+Open Eclipse Marketplace, search "JDT Extension" and click install.
+
+![marketplace](https://bloodlee.github.io/img/marketplace_installation.png)
+
+You can also use update site URL: https://bloodlee.github.io/jdt_extension_update/
