@@ -30,6 +30,16 @@
             id="org.yli.eclipse.jdt.extension.console_search_with_google"
             name="%SEARCH_WITH_GOOGLE">
       </command>
+      <command
+            description="%SEARCH_WITH_STACKOVERFLOW"
+            id="org.yli.eclipse.jdt.extension.terminal_search_with_stackoverflow"
+            name="%SEARCH_WITH_STACKOVERFLOW">
+      </command>
+      <command
+            description="%SEARCH_WITH_STACKOVERFLOW"
+            id="org.yli.eclipse.jdt.extension.console_search_with_stackoverflow"
+            name="%SEARCH_WITH_STACKOVERFLOW">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
@@ -44,6 +54,14 @@
       <handler
             class="org.yli.eclipse.jdt.extension.handlers.SearchWithGoogleHandlerInTerminal"
             commandId="org.yli.eclipse.jdt.extension.terminal_search_with_google">
+      </handler>
+      <handler
+            class="org.yli.eclipse.jdt.extension.handlers.SearchWithStackOverflowHandlerInConsole"
+            commandId="org.yli.eclipse.jdt.extension.console_search_with_stackoverflow">
+      </handler>
+      <handler
+            class="org.yli.eclipse.jdt.extension.handlers.SearchWithStackOverflowHandlerInTerminal"
+            commandId="org.yli.eclipse.jdt.extension.terminal_search_with_stackoverflow">
       </handler>
       <handler
             class="org.yli.eclipse.jdt.extension.handlers.SearchWithGoogleHandlerInConsole"
@@ -111,6 +129,13 @@
                mnemonic="g"
                style="push">
          </command>
+         <command
+               commandId="org.yli.eclipse.jdt.extension.terminal_search_with_stackoverflow"
+               icon="icons/stackoverflow-icon.png"
+               label="%SEARCH_WITH_STACKOVERFLOW"
+               mnemonic="s"
+               style="push">
+         </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -122,6 +147,13 @@
                mnemonic="g"
                style="push">
          </command>
+         <command
+               commandId="org.yli.eclipse.jdt.extension.console_search_with_stackoverflow"
+               icon="icons/stackoverflow-icon.png"
+               label="%SEARCH_WITH_STACKOVERFLOW"
+               mnemonic="g"
+               style="push">
+         </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -130,6 +162,13 @@
                commandId="org.yli.eclipse.jdt.extension.console_search_with_google"
                icon="icons/google-icon.png"
                label="%SEARCH_WITH_GOOGLE"
+               mnemonic="g"
+               style="push">
+         </command>
+         <command
+               commandId="org.yli.eclipse.jdt.extension.console_search_with_stackoverflow"
+               icon="icons/stackoverflow-icon.png"
+               label="%SEARCH_WITH_STACKOVERFLOW"
                mnemonic="g"
                style="push">
          </command>
@@ -178,6 +217,25 @@
                icon="icons/google-icon.png"
                id="org.yli.eclipse.jdt.extension.action_google_search"
                label="%SEARCH_WITH_GOOGLE"
+               style="push">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="org.yli.eclipse.jdt.extension.stackoverflowsearch"
+            nameFilter="*.*"
+            objectClass="org.eclipse.ui.IEditorInput">
+         <menu
+               icon="icons/stackoverflow-icon.png"
+               id="org.yli.eclipse.jdt.extension.menu_stackoverflow_search"
+               label="%SEARCH_WITH_STACKOVERFLOW"
+               path="additions">
+         </menu>
+         <action
+               class="org.yli.eclipse.jdt.extension.actions.SearchWithStackOverflowAction"
+               icon="icons/stackoverflow-icon.png"
+               id="org.yli.eclipse.jdt.extension.action_stackoverflow_search"
+               label="%SEARCH_WITH_STACKOVERFLOW"
                style="push">
          </action>
       </objectContribution>

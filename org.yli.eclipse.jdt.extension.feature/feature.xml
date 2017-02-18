@@ -2,7 +2,7 @@
 <feature
       id="org.yli.eclipse.jdt.extension.feature"
       label="%FEATURE_NAME"
-      version="1.0.4"
+      version="1.0.5"
       provider-name="%AUTHOR">
 
    <license url="https://www.eclipse.org/legal/epl-v10.html">
