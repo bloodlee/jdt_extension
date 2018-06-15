@@ -239,6 +239,70 @@
                style="push">
          </action>
       </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="org.yli.eclipse.jdt.extension.notemaker"
+            nameFilter="*.*"
+            objectClass="org.eclipse.ui.IEditorInput">
+         <menu
+               id="org.yli.eclipse.jdt.extension.menu_make_note"
+               label="%MAKE_A_NOTE"
+               path="additions">
+         </menu>
+         <action
+               class="org.yli.eclipse.jdt.extension.actions.MakeNoteAction"
+               id="org.yli.eclipse.jdt.extension.menu_make_note"
+               label="%MAKE_A_NOTE"
+               style="push">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.filebuffers.annotationModelCreation">
+      <factory
+            class="org.yli.eclipse.jdt.extension.note.NoteAnnotationModelFactory"
+            extensions="java">
+      </factory>
+   </extension>
+   <extension
+         id="org.yli.eclipse.jdt.note.marker"
+         name="Note Marker"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.textmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors.markerAnnotationSpecification">
+      <specification
+            annotationImageProvider="org.yli.eclipse.jdt.extension.note.NoteAnnotationImageProvider"
+            annotationType="org.yli.eclipse.jdt.extension.noteSpecification"
+            colorPreferenceKey="note_color"
+            colorPreferenceValue="255,255,0"
+            contributesToHeader="false"
+            highlightPreferenceKey="note_highlight"
+            highlightPreferenceValue="true"
+            includeOnPreferencePage="true"
+            isGoToNextNavigationTarget="false"
+            isGoToNextNavigationTargetKey="note_isGoToNextNavigationTargetKey"
+            isGoToPreviousNavigationTarget="false"
+            isGoToPreviousNavigationTargetKey="note_isGoToPreviousNavigationTargetKey"
+            label="%NOTE_ANNOTATION_LABEL"
+            overviewRulerPreferenceKey="note_overviewRuler"
+            overviewRulerPreferenceValue="false"
+            presentationLayer="0"
+            showInNextPrevDropdownToolbarAction="false"
+            showInNextPrevDropdownToolbarActionKey="note_showInNextPrevDropdownToolbarAction"
+            textPreferenceKey="note_text"
+            textPreferenceValue="true"
+            textStylePreferenceKey="note_stylePreferences"
+            textStylePreferenceValue="BOX"
+            verticalRulerPreferenceKey="note_verticalRuler"
+            verticalRulerPreferenceValue="true">
+      </specification>
    </extension>
 
 </plugin>

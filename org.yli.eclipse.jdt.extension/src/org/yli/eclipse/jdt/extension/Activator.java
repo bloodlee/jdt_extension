@@ -1,5 +1,9 @@
 package org.yli.eclipse.jdt.extension;
 
+import java.net.URL;
+
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -52,5 +56,17 @@ public class Activator extends AbstractUIPlugin {
   public static Activator getDefault() {
     return plugin;
   }
+  
+  public static ImageDescriptor getImageDescriptor(String key) {
+    return loadImage(key).getDescriptor(key);
+  }
 
+  private static ImageRegistry loadImage(String path) {
+    ImageRegistry reg = plugin.getImageRegistry();
+    if (reg.getDescriptor(path) == null) {
+      URL url = plugin.getBundle().getEntry(path);
+      reg.put(path, ImageDescriptor.createFromURL(url));
+    }
+    return reg;
+  }
 }
